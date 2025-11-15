@@ -24,16 +24,17 @@ This project analyzes health insurance premium pricing patterns for EU/EFTA resi
 
 **1. Generalized Additive Model (GAM)**
 - Simplified model with 6 regional groupings (Benelux, DACH, Southern Europe, Nordic, Eastern Europe, Other EU)
+- DACH (Germany, Austria, Switzerland) as baseline reference level
 - Numeric age variable for linear age-effect modeling
 - Interaction terms: Region × Age, Age × Accident Coverage
 - Model complexity: ~15-20 parameters (reduced from 80+ for improved interpretability)
-- Performance: R² ≈ 70-80%, explaining substantial premium variance
+- Performance: R² = 75%, RMSE = 97 CHF
 
 **2. Support Vector Machine (SVM)**
 - Binary classification: High vs. Low premium tiers
 - RBF kernel with optimized hyperparameters (cost=10, gamma=0.1)
 - Feature engineering: Geographic risk factors, age scaling, coverage indicators
-- Performance: ~75-80% accuracy, Kappa > 0.5
+- Performance: 80% accuracy, Kappa = 0.595, Sensitivity = 97%
 
 ### Key Techniques
 - **Log transformations** for premium amounts
@@ -109,9 +110,10 @@ install.packages(c("tidyverse", "mgcv", "e1071", "caret", "ggplot2", "knitr"))
 ## Results Summary
 
 ### Model Performance
-- **GAM Model**: 70-80% variance explained, interpretable coefficients with clear practical meaning
-- **SVM Model**: 75-80% classification accuracy, high sensitivity for detecting high-premium policies
-- **Complementary Strengths**: GAM provides explanatory depth ("why"), SVM provides predictive power ("what")
+- **GAM Model**: 75% variance explained, RMSE = 97 CHF, interpretable coefficients with clear practical meaning
+- **SVM Model**: 80% classification accuracy, 97% sensitivity for detecting high-premium policies, Kappa = 0.595
+- **Complementary Strengths**: GAM provides explanatory transparency (regulatory audits), SVM enables high-throughput screening (automated monitoring)
+- **Visual Analysis**: Comparative model analysis table, regional premium visualization, model diagnostics
 
 ### Academic Contribution
 This analysis demonstrates:
