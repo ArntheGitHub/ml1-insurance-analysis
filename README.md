@@ -28,19 +28,22 @@ This project analyzes health insurance premium pricing patterns for EU/EFTA resi
 - Numeric age variable for linear age-effect modeling
 - Interaction terms: Region × Age, Age × Accident Coverage
 - Model complexity: ~15-20 parameters (reduced from 80+ for improved interpretability)
-- Performance: R² = 75%, RMSE = 97 CHF
+- Performance: R² = 75%, RMSE = 94 CHF
 
 **2. Support Vector Machine (SVM)**
 - Binary classification: High vs. Low premium tiers
 - RBF kernel with optimized hyperparameters (cost=10, gamma=0.1)
 - Feature engineering: Geographic risk factors, age scaling, coverage indicators
 - Performance: 80% accuracy, Kappa = 0.595, Sensitivity = 97%
+- Feature importance analysis: Permutation-based ranking of predictive variables
 
 ### Key Techniques
+- **Comprehensive exploratory data analysis** with 8+ visualizations (distributions, correlations, interactions)
 - **Log transformations** for premium amounts
 - **Train/test split** (80/20) for model validation
-- **Smoothers** (LOESS and GAM) for exploratory data analysis
-- **Comprehensive coefficient interpretation** with exp() transformations
+- **Smoothers** (LOESS and GAM) for non-linear relationship detection
+- **Comprehensive coefficient interpretation** with exp() transformations and practical significance assessment
+- **Model validation plots** (predicted vs. actual, residual diagnostics, decision boundaries)
 
 ## Key Findings
 
@@ -58,6 +61,7 @@ This project analyzes health insurance premium pricing patterns for EU/EFTA resi
 - Models can serve as automated screening tools for regulatory oversight
 - Regional premium differentials exceeding 20-30% warrant actuarial justification
 - GAM coefficients provide transparent benchmark for "expected" premiums
+- Analysis provides evidence-based recommendations for insurance market regulation and consumer protection
 
 ## Project Structure
 
@@ -110,10 +114,10 @@ install.packages(c("tidyverse", "mgcv", "e1071", "caret", "ggplot2", "knitr"))
 ## Results Summary
 
 ### Model Performance
-- **GAM Model**: 75% variance explained, RMSE = 97 CHF, interpretable coefficients with clear practical meaning
+- **GAM Model**: 75% variance explained, RMSE = 94 CHF, interpretable coefficients with clear practical meaning
 - **SVM Model**: 80% classification accuracy, 97% sensitivity for detecting high-premium policies, Kappa = 0.595
 - **Complementary Strengths**: GAM provides explanatory transparency (regulatory audits), SVM enables high-throughput screening (automated monitoring)
-- **Visual Analysis**: Comparative model analysis table, regional premium visualization, model diagnostics
+- **Visual Analysis**: Comprehensive EDA section with 8+ plots, comparative model analysis table, regional premium visualization with error bars, model diagnostics, predicted vs. actual plots, feature importance rankings
 
 ### Academic Contribution
 This analysis demonstrates:
